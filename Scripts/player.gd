@@ -1,14 +1,14 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 8.0
 const JUMP_VELOCITY = 4.5
 
 
 
 
 var sensivity = 0.003
-@onready var camera = $Camera3d
+@onready var camera = $Camera3D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -17,10 +17,12 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * sensivity)
-		camera.rotate_x(-event.relative.y * sensivity)
-		camera.rotation.x = clamp(camera.rotation.x,deg_to_rad(-60), deg_to_rad(70))
 
-func _process(delta):
+		#camera.rotation.x -= event.relative.y * sensivity
+		camera.rotate_x(-event.relative.y * sensivity)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(70))
+
+func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 
@@ -36,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
+	#var direction := Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, rotation.y).normalized()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED

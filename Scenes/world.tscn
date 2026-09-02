@@ -21,12 +21,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_uj04i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=711733026]
-transform = Transform3D(0.9999595, 4.164508e-05, 0.008990961, -3.5307043e-05, 0.9999999, -0.0007000936, -0.008990949, 0.00069977593, 0.9999594, -0.1049093, -0.44814122, 0.06493175)
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -0.1049093, -0.44814122, 0.06493175)
 material_override = SubResource("StandardMaterial3D_jc63w")
 mesh = SubResource("QuadMesh_p5viw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=812122293]
 transform = Transform3D(1, 0, 0, 0, -0.0015584661, 0.9999988, 0, -0.9999988, -0.0015584661, 0, 5.4584537, 0)
 
-[node name="Player" parent="DirectionalLight3D" unique_id=244891755 instance=ExtResource("1_a02cp")]
-transform = Transform3D(1, 0, 0, 0, -0.0015584661, -0.9999988, 0, 0.9999988, -0.0015584661, 0, 0.0075132223, -4.8209023)
+[node name="Player" parent="." unique_id=244891755 instance=ExtResource("1_a02cp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
